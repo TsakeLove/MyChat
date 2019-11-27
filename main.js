@@ -1,7 +1,7 @@
 'use strict';
 const app = require('express')();
 const server = require('http').Server(app);
-const io = require('socket.io')(server);
+const io = require('socket.io').listen(server);
 const path = require('path');
 
 const connections = [];
