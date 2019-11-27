@@ -10,7 +10,7 @@ let users = [];
 let messages = [];
 
 app.get('/', function (req, res) {
-    res.sendFile(path.join(__dirname, '***'));
+    res.sendFile(path.join(__dirname, 'auth.html'));
 });
 
 app.get('/:id', function (req, res) {
