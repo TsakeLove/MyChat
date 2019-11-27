@@ -3,7 +3,7 @@ const app = require('express')();
 const server = require('http').Server(app);
 const io = require('socket.io')(server);
 const path = require('path');
-const port = 8800;
+
 // const online = [];
 // array to store current users
 const users = [];
@@ -40,7 +40,5 @@ io.on('connection', (socket) => {
     console.log('Disconnected: %s sockets connected', connections.length);
   });
 });
-
-server.listen(port, () => {
-  console.log('app running on port ' + port);
-});
+const port = process.env.PORT || 8800;
+server.listen(port, console.log(port));
