@@ -1,21 +1,21 @@
-var socket = io.connect('http://localhost:8800/');
-var user = '';
+const socket = io.connect('http://localhost:8800/');
+let user = '';
 
 window.onload = function () {
 
-    var users_container = document.getElementById('userlist');
-    var message_container = document.getElementById('messages');
+    let users_container = document.getElementById('userlist');
+    let message_container = document.getElementById('messages');
 
     message_container.style.height = window.innerHeight - 200 + 'px';
 
-    var btn = document.getElementById('btn');
-    var message_input = document.getElementById('inp');
+    let btn = document.getElementById('btn');
+    let message_input = document.getElementById('inp');
 
 
     // загрузить имена пользователей, которые online 
     socket.emit('load users');
     socket.on('users loaded', function (data) {
-        var display_users = data.users.map((username) => {
+        let display_users = data.users.map((username) => {
             return `<li>${username}</li>`;
         });
 
@@ -40,7 +40,7 @@ window.onload = function () {
     // загрузить текущее сообщение
     socket.on('chat message', function (message) {
         console.log(message)
-        var display_message = `<div class ="panel well">
+        let display_message = `<div class ="panel well">
                                    <h4>${message.author}</h4>
                                    <h5>${message.text}</h5>
                                </div>`

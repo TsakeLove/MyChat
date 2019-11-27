@@ -14,7 +14,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/:id', (req, res) => {
-  if (req.params.id === '') {
+  if (req.params.id === 'client.js') {
     res.sendFile(path.join(__dirname, 'client.js'));
   } else if (req.params.id === 'favicon.ico') {
     res.sendStatus(404);
