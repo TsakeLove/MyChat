@@ -1,8 +1,20 @@
 {
   "name": "MyChat",
   "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "test": "npm run lint",
+    "prettier": "prettier --config .prettierrc.json --write main.js",
+    "lint": "eslint main.js",
+    "lint:fix": "eslint --fix main.js",
+    "precommit": "npm run lint:fix",
+    "prepush": "npm run test" ,
+    "start": "node main.js"
+  },
   "dependencies": {
     "express": "^4.17.1",
-    "socket.io": "^2.3.0"
+    "socket.io": "^2.3.0",
+    "prettier": "1.19.1",
+    "eslint": "^6.6.0"
   }
 }
