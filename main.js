@@ -4,10 +4,11 @@ const server = require('http').Server(app);
 const io = require('socket.io')(server);
 const path = require('path');
 
-// const online = [];
+const connections = [];
 // array to store current users
 const users = [];
 // array for storing current messages
+const messages = [];
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'auth.html'));
 });
@@ -24,7 +25,6 @@ app.get('/:id', (req, res) => {
 });
 // connection setup
 io.on('connection', (socket) => {
-  let connections;
   connections.push(socket);
   console.log(users);
   console.log('Connected: %s sockets connected', connections.length);
@@ -39,6 +39,27 @@ io.on('connection', (socket) => {
     io.sockets.emit('users loaded', { users });
     console.log('Disconnected: %s sockets connected', connections.length);
   });
+  // message processing
+  socket.on('send message', (data) => {
+    // save message
+    messages.push(data);
+
+    // raise a chat message event and send it to all available connections
+    io.sockets.emit('chat message', data);
+  });
+
+  // upload users
+  socket.on('load users', () => {
+    console.log(users);
+    io.sockets.emit('users loaded', { users });
+  });
+
+  // upload messages
+  socket.on('load messages', () => {
+    socket.emit('messages loaded', { messages });
+  });
+  // add new user to chat
+  socket.emit('new user', { name: users[users.length - 1] });
 });
 const port = process.env.PORT || 8800;
 server.listen(port, console.log(port));
