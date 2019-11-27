@@ -15,17 +15,14 @@ app.get('/', (req, res) => {
 });
 
 app.get('/:id', (req, res) => {
-
   if (req.params.id === '') {
     res.sendFile(path.join(__dirname, 'client.js'));
   } else if (req.params.id === 'favicon.ico') {
     res.sendStatus(404);
   } else {
-
     users.push(req.params.id);
     res.sendFile(path.join(__dirname, 'index.html'));
   }
-
 });
 // connection setup
 io.on('connection', (socket) => {
@@ -44,9 +41,6 @@ io.on('connection', (socket) => {
     io.sockets.emit('users loaded', { users });
     console.log('Disconnected: %s sockets connected', connections.length);
   });
-
-
-
 });
 
 server.listen(port, () => {
