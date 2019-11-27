@@ -11,6 +11,9 @@
     "prepush": "npm run test" ,
     "start": "node main.js"
   },
+  "engines": {
+    "node": "10.48.0"
+  },
   "dependencies": {
     "express": "^4.17.1",
     "socket.io": "^2.3.0",
