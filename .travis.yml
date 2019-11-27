@@ -1,13 +1,9 @@
 language: node_js
 node_js:
-  - "node"
-
-before_script:
-  - cd ./nodejs
-
+  - 12
+install:
+  npm install
 script:
-  - npm install
-  - npm run postinstall
-
-after_script:
-  - npm run test
+  npm test
+notifications:
+  email: false

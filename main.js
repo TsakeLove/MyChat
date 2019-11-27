@@ -8,8 +8,6 @@ const port = 8800;
 // array to store current users
 const users = [];
 // array for storing current messages
-// const messages = [];
-
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'auth.html'));
 });
