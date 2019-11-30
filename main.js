@@ -1,8 +1,8 @@
 'use strict';
 const express = require('express');
 const app = express();
-const server = require('http').createServer(app);
-const io = require('socket.io').listen(server);
+const server = require('http').Server(app);
+const io = require('socket.io')(server);
 
 const path = require('path');
 
@@ -62,5 +62,7 @@ io.on('connection', (socket) => {
   });
   // add new user to chat
   socket.emit('new user', { name: users[users.length - 1] });
+
 });
+
 server.listen(process.env.PORT || 8800);

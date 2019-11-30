@@ -1,4 +1,4 @@
-const socket = io.connect('http://localhost:8800/');
+const socket = io.connect('https://tsakelove.herokuapp.com');
 let user = '';
 
 window.onload = function () {
