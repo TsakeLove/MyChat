@@ -1,4 +1,4 @@
-const socket = io.connect('https://tsakelove.herokuapp.com');
+const socket = io.connect('https://tsake-chat.herokuapp.com');
 let user = '';
 
 window.onload = function () {
