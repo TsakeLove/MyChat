@@ -8,7 +8,7 @@ const path = require('path');
 
 const connections = [];
 // array to store current users
-const users = new Set();
+const users = [];
 // array for storing current messages
 const messages = [];
 app.get('/', (req, res) => {
@@ -21,7 +21,7 @@ app.get('/:id', (req, res) => {
   } else if (req.params.id === 'favicon.ico') {
     res.sendStatus(404);
   } else {
-    users.add(req.params.id);
+    users.push(req.params.id);
     res.sendFile(path.join(__dirname, 'index.html'));
   }
 });
