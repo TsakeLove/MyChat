@@ -19,7 +19,7 @@ window.onload = function () {
 
         let display_users = data.users.map((username) => {
 
-             return `<li>${user}</li>`;
+             return `<li>${username}</li>`;
         });
 
         users_container.innerHTML = display_users.join(' ');
