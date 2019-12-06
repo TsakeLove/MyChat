@@ -29,7 +29,12 @@
         window.onload = function () {
             let btn = document.getElementsByTagName('button')[0];
             let inp = document.getElementsByTagName('input')[0];
+            window.addEventListener ("keypress", function (e) {
+                if (e.keyCode !== 13) return;
+                window.location.href = '/' + inp.value;
 
+
+            })
             btn.onclick = function () {
 
                 if (inp.value == '') {
@@ -42,6 +47,7 @@
 
             }
         }
+
     </script>
 </head>
 <body>

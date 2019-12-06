@@ -62,7 +62,6 @@ io.on('connection', (socket) => {
   });
   // add new user to chat
   socket.emit('new user', { name: users[users.length - 1] });
-
 });
 
 server.listen(process.env.PORT || 8800);
